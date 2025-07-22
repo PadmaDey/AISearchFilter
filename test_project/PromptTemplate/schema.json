@@ -1,0 +1,12 @@
+{
+  "answer": {
+    "skills": "List of technical or analytical skills (if query is about skills)",
+    "tools": "List of BI tools, programming languages, or software (if relevant)",
+    "experience_summary": "Short summary of work experience (if query is about experience)",
+    "certifications": "List of certifications (if query is about certifications)",
+    "projects": "Key projects (if query is about projects)"
+  },
+  "sources": [
+    "Array of resume text snippets used as evidence"
+  ]
+}
