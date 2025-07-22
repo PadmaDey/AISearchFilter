@@ -5,73 +5,70 @@ from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import LLMChainExtractor
-from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
-from langchain_core.documents import Document
 from dotenv import load_dotenv
 
 load_dotenv()
 
-loader = PyPDFLoader(r"test_project\raw_docs\Manisha_Ghosh_Data_Analyst_Resume.pdf")
+# Load PDF
+loader = PyPDFLoader(r"test_project/raw_docs/Manisha_Ghosh_Data_Analyst_Resume.pdf")
 pages = loader.load()
 
+full_text = "\n".join([page.page_content for page in pages])
+
+# Split text into chunks
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=100,
     chunk_overlap=15
 )
+chunks = splitter.create_documents([full_text])
 
-chunks = splitter.split_text(pages)
-
-full_text = "\n".join([page.page_content for page in chunks])
-
+# Embedding model
 embedding_model = HuggingFaceEndpointEmbeddings(
     repo_id="sentence-transformers/all-MiniLM-L6-v2"
 )
 
-vectorstore = FAISS.fron_documents(
-    documents=pages,
+# Create FAISS vectorstore
+vectorstore = FAISS.from_documents(
+    documents=chunks,
     embedding=embedding_model
 )
 
-vectorstore.save_local("vactorstore")
+vectorstore.save_local("test_project/vectorstore")
 
+# Retriever
 retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
 
+# LLM Model
 model = ChatAnthropic(model="claude-3-5-sonnet-20240620")
 compressor = LLMChainExtractor.from_llm(model)
 
-compression_retriver = ContextualCompressionRetriever(
+compression_retriever = ContextualCompressionRetriever(
     base_retriever=retriever,
     base_compressor=compressor
 )
-query = "Tell me about the skills, the candidate has."
 
+query = "Tell me about the skills the candidate has."
+
+# Prompt Template
 prompt = PromptTemplate(
-    template="Base on the document, answer the question:\n"
-            "{query}\n\n"
-            "Document:\n{doc}",
-    input_variables=['query', 'doc'],
-    validate_template=True
+    template="Based on the document, answer the question:\n"
+             "{query}\n\n"
+             "Document:\n{doc}",
+    input_variables=['query', 'doc']
 )
 
-prompt.save(r'test_project\PromptTemplate\schema.json')
+prompt.save(r"test_project/PromptSchema/schema.json")
 
-import json
-from pathlib import Path
-# Load the JSON schema from external file
-schema_path = Path(r"test_project\PromptTemplate\schema.json")
-with open(schema_path, "r", encoding="utf-8") as f:
-    json_schema = json.load(f)
+# Get retrieved docs first (string query only)
+retrieved_docs = compression_retriever.invoke(query)
+retrieved_text = "\n".join([doc.page_content for doc in retrieved_docs])
 
-json_output = model.with_structured_output(schema_path)
-
-json_prompt = json_output.invoke(compression_retriver)
-
+# Run prompt with retrieved text
 parser = StrOutputParser()
+chain = prompt | model | parser
 
-chain = compression_retriver | prompt | model | parser
-
-response = chain.invoke({'doc': full_text})
+response = chain.invoke({'query': query, 'doc': retrieved_text})
 
 print(response)

@@ -1,0 +1,16 @@
+{
+    "name": null,
+    "input_variables": [
+        "doc",
+        "query"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "Based on the document, answer the question:\n{query}\n\nDocument:\n{doc}",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}
