@@ -51,7 +51,7 @@ prompt = PromptTemplate(
 )
 
 # Save schema separately for reference (not used in the prompt directly anymore)
-schema_path = Path("resume_query_dir/PromptTemplate/schema.json")
+schema_path = Path("resume_query_dir/PromptSchema/schema.json")
 schema_path.parent.mkdir(parents=True, exist_ok=True)
 with open(schema_path, "w", encoding="utf-8") as f:
     json.dump(schema, f, indent=2)
