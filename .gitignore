@@ -206,3 +206,5 @@ aisearchfilter_venv/
 # "List candidates who worked with Power BI and SQL."
 
 # "Which candidates have over 3 years of experience?"
+
+# Extract the candidate's name, all skills, and a 1-2 sentence experience summary.
