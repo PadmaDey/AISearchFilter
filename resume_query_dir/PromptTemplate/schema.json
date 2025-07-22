@@ -1,0 +1,13 @@
+{
+  "candidates": [
+    {
+      "name": "Candidate name",
+      "designation": "Current or most recent title",
+      "unique_id": "Resume identifier",
+      "skills": [
+        "List of relevant skills, tools, or frameworks explicitly mentioned"
+      ],
+      "experience_summary": "Short summary of work experience (1-2 sentences)"
+    }
+  ]
+}
