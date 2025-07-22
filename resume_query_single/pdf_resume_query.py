@@ -29,7 +29,7 @@ embedding_model = HuggingFaceEndpointEmbeddings(
     repo_id="sentence-transformers/all-MiniLM-L6-v2"
 )
 vectorstore = FAISS.from_documents(documents, embedding_model)
-vectorstore.save_local("vectorstore")
+vectorstore.save_local("resume_query_single/vectorstore")
 
 # === 4. Retriever with LLM-based compression ===
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
@@ -47,12 +47,11 @@ schema = {
         "experience_summary": "Short summary of work experience (if query is about experience)",
         "certifications": "List of certifications (if query is about certifications)",
         "projects": "Key projects (if query is about projects)"
-    },
-    "sources": ["Array of resume text snippets used as evidence"]
+    }
 }
 
 # Optionally save schema for reference
-schema_path = Path(r"resume_query_single\PromptTemplate\schema_pdf.json")
+schema_path = Path(r"resume_query_single\PromptSchema\schema_pdf.json")
 schema_path.parent.mkdir(parents=True, exist_ok=True)
 with open(schema_path, "w", encoding="utf-8") as f:
     json.dump(schema, f, indent=2)

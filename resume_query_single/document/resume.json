@@ -1,0 +1,131 @@
+{
+  "_id": {
+    "$oid": "auto-generate"
+  },
+  "name": "MANISHA GHOSH",
+  "email": "manisha27@gmail.com",
+  "secondary_email": "",
+  "primary_phone": "+91 9434342716",
+  "secondary_phone": "",
+  "cv_directory_link": "CVs/auto",
+  "unique_id": "auto",
+  "designation": "Business Analyst",
+  "location": "Bethuadahari, West Bengal",
+  "personal_details": {
+    "date_of_birth": "",
+    "age": 0,
+    "gender": ""
+  },
+  "social_profiles": {
+    "github": "https://github.com/manishaghosh07",
+    "linkedin": "https://linkedin.com/manisha1999",
+    "twitter": "",
+    "leetcode": "",
+    "others": []
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Technology in Information Technology",
+      "institution": "XYZ University, India",
+      "graduation_year": "2020"
+    }
+  ],
+  "work_experience": [
+    {
+      "company_name": "ABC Tech Solutions",
+      "position": "Business Analyst",
+      "duration": "June 2022 \u2013 Present",
+      "responsibilities": [
+        "Designed and maintained Power BI dashboards for product and sales teams, improving decision-making speed by 40%",
+        "Wrote complex SQL queries to extract and analyze data from large relational databases (MySQL, Redshift)",
+        "Automated weekly KPI tracking using Excel macros and dashboards, reducing manual effort by 30%",
+        "Collaborated with cross-functional teams to deliver insights that led to a 12% increase in revenue",
+        "Conducted A/B tests and customer behavior analysis for new feature rollouts",
+        "Used Python (pandas, matplotlib) for exploratory data analysis and ad-hoc reports (self-initiated projects)"
+      ]
+    },
+    {
+      "company_name": "XYZ Analytics",
+      "position": "Data Analyst Intern",
+      "duration": "Jan 2021 \u2013 May 2022",
+      "responsibilities": [
+        "Supported client reporting by building automated dashboards in Amazon QuickSight",
+        "Cleaned and transformed raw data for modeling and visualizations using Excel and SQL",
+        "Assisted in developing financial reports and presented insights to senior management",
+        "Contributed to Python-based data wrangling tasks during a digital marketing optimization project"
+      ]
+    }
+  ],
+  "total_experience": "2+ years",
+  "technical_skills": [
+    "SQL (PostgreSQL, MySQL, Redshift)",
+    "Power BI",
+    "Amazon QuickSight",
+    "Excel (VLOOKUP, Pivot Tables, Macros)",
+    "Python (pandas, NumPy, matplotlib)",
+    "Data Visualization & Storytelling",
+    "Stakeholder Management",
+    "A/B Testing & KPI Reporting",
+    "Agile & Scrum Methodologies"
+  ],
+  "soft_skills": [],
+  "languages": [
+    "English",
+    "Hindi"
+  ],
+  "certifications": [
+    "Google Data Analytics Professional Certificate \u2013 Coursera",
+    "Microsoft Certified: Data Analyst Associate (Power BI) \u2013 Microsoft",
+    "SQL for Data Science \u2013 Udemy"
+  ],
+  "projects": [
+    {
+      "name": "Customer Segmentation using RFM Analysis",
+      "description": "Performed segmentation on e-commerce data using Python and SQL. Visualized segments in Power BI to drive targeted marketing",
+      "technologies": [
+        "Python",
+        "SQL",
+        "Power BI"
+      ]
+    },
+    {
+      "name": "Sales Forecast Dashboard",
+      "description": "Created an interactive Power BI dashboard for regional sales trends. Included drill-down capabilities and forecast visualizations using DAX",
+      "technologies": [
+        "Power BI",
+        "DAX"
+      ]
+    }
+  ],
+  "batch_id": {
+    "$binary": {
+      "base64": "auto-generate",
+      "subType": "04"
+    }
+  },
+  "job_id": {
+    "$oid": "auto-generate"
+  },
+  "updated_at": {
+    "$date": "2025-07-22T13:24:19.544973Z"
+  },
+  "created_at": {
+    "$date": "2025-07-22T13:24:19.545976Z"
+  },
+  "status": "New",
+  "compatibility_analysis": {
+    "overall_score": 0,
+    "analysis": {
+      "strengths": [],
+      "gaps": [],
+      "matching_points": [],
+      "improvement_areas": []
+    },
+    "detailed_scoring": {
+      "skills_match": 0,
+      "experience_relevance": 0,
+      "education_fit": 0,
+      "overall_potential": 0
+    }
+  }
+}

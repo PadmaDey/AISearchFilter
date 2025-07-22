@@ -1,7 +1,7 @@
-# convert_pdf_to_json.py
+# pdf_to_json.py
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, UTC
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import PromptTemplate
@@ -10,55 +10,56 @@ from langchain_community.document_loaders import PyPDFLoader
 
 load_dotenv()
 
-# === Load PDF ===
-resume_pdf = Path(r"resume_query_single\raw_docs\Manisha_Ghosh_Data_Analyst_Resume.pdf")
-loader = PyPDFLoader(str(resume_pdf))
-pages = loader.load()
-full_resume_text = "\n".join([p.page_content for p in pages])
+def convert_pdf_to_json(pdf_path: str, output_json_path: str) -> dict:
+    """Converts a PDF resume into a structured JSON and saves it."""
+    
+    # === Load PDF ===
+    loader = PyPDFLoader(pdf_path)
+    pages = loader.load()
+    full_resume_text = "\n".join([p.page_content for p in pages])
 
-# === Claude Model ===
-model = ChatAnthropic(model="claude-3-5-sonnet-20240620")
+    # === Claude Model ===
+    model = ChatAnthropic(model="claude-3-5-sonnet-20240620")
 
-# === Step 1: Ask Claude for simplified JSON ===
-prompt_template = """
-Extract the following details from the resume and return ONLY valid JSON (no explanations):
+    # === Prompt ===
+    prompt_template = """
+    Extract the following details from the resume and return ONLY valid JSON (no explanations):
+    {{
+      "name": "",
+      "email": "",
+      "phone": "",
+      "location": "",
+      "linkedin": "",
+      "github": "",
+      "designation": "",
+      "education": [
+        {{"degree": "", "institution": "", "graduation_year": ""}}
+      ],
+      "work_experience": [
+        {{"company_name": "", "position": "", "duration": "", "responsibilities": []}}
+      ],
+      "skills": [],
+      "certifications": [],
+      "projects": [
+        {{"name": "", "description": "", "technologies": []}}
+      ],
+      "languages": []
+    }}
+    Resume:
+    {resume}
+    """
+    parser = StrOutputParser()
+    chain = PromptTemplate(template=prompt_template, input_variables=["resume"]) | model | parser
+    raw_output = chain.invoke({"resume": full_resume_text})
 
-{{
-  "name": "",
-  "email": "",
-  "phone": "",
-  "location": "",
-  "linkedin": "",
-  "github": "",
-  "designation": "",
-  "education": [
-    {{"degree": "", "institution": "", "graduation_year": ""}}
-  ],
-  "work_experience": [
-    {{"company_name": "", "position": "", "duration": "", "responsibilities": []}}
-  ],
-  "skills": [],
-  "certifications": [],
-  "projects": [
-    {{"name": "", "description": "", "technologies": []}}
-  ],
-  "languages": []
-}}
+    # === Validate JSON ===
+    try:
+        parsed_core = json.loads(raw_output)
+    except json.JSONDecodeError:
+        print("Claude did not return valid JSON. Raw output:\n", raw_output)
+        return {}
 
-Resume:
-{resume}
-"""
-
-
-parser = StrOutputParser()
-chain = PromptTemplate(template=prompt_template, input_variables=["resume"]) | model | parser
-raw_output = chain.invoke({"resume": full_resume_text})
-
-# === Step 2: Validate JSON and wrap it in Mongo-style schema ===
-try:
-    parsed_core = json.loads(raw_output)
-
-    # Add MongoDB-style fields
+    # === Build Final Structured Schema ===
     structured_resume = {
         "_id": {"$oid": "auto-generate"},
         "name": parsed_core.get("name", ""),
@@ -88,8 +89,8 @@ try:
         "projects": parsed_core.get("projects", []),
         "batch_id": {"$binary": {"base64": "auto-generate", "subType": "04"}},
         "job_id": {"$oid": "auto-generate"},
-        "updated_at": {"$date": datetime.utcnow().isoformat() + "Z"},
-        "created_at": {"$date": datetime.utcnow().isoformat() + "Z"},
+        "updated_at": {"$date": datetime.now(UTC).isoformat()},
+        "created_at": {"$date": datetime.now(UTC).isoformat()},
         "status": "New",
         "compatibility_analysis": {
             "overall_score": 0,
@@ -108,11 +109,12 @@ try:
         }
     }
 
-    # Save to JSON
-    output_path = Path(r"resume_query_single\document\resume.json")
+    # Ensure output directory exists
+    output_path = Path(output_json_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(structured_resume, f, indent=2)
-    print(f"Structured resume saved at {output_path}")
 
-except json.JSONDecodeError:
-    print("Claude did not return valid JSON. Raw output:\n", raw_output)
+    print(f"Structured resume saved at {output_path}")
+    return structured_resume
