@@ -7,7 +7,9 @@
       "skills": [
         "List of relevant skills, tools, or frameworks explicitly mentioned"
       ],
-      "experience_summary": "Short summary of work experience (1-2 sentences)"
+      "experience_summary": "Short summary of work experience (1-2 sentences)",
+      "total_experience": "Total professional experience (e.g., '3 years 6 months')",
+      "ats_score": "Numerical ATS score (0-100)"
     }
   ]
 }

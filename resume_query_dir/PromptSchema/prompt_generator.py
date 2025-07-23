@@ -1,8 +1,12 @@
+# ============================================
+# resume_query_dir/PromptSchema/prompt_generator.py (Schema as variable)
+# ============================================
+
 from langchain_core.prompts import PromptTemplate
 from pathlib import Path
 import json
 
-# Candidate-only schema (no sources)
+# Candidate schema (for clarity, now passed as an input variable)
 schema = {
     "candidates": [
         {
@@ -10,12 +14,14 @@ schema = {
             "designation": "Current or most recent title",
             "unique_id": "Resume identifier",
             "skills": ["List of relevant skills, tools, or frameworks explicitly mentioned"],
-            "experience_summary": "Short summary of work experience (1-2 sentences)"
+            "experience_summary": "Short summary of work experience (1-2 sentences)",
+            "total_experience": "Total professional experience (e.g., '3 years 6 months')",
+            "ats_score": "Numerical ATS score (0-100)"
         }
     ]
 }
 
-# Enhanced prompt - considers keywords, skills, and all resume fields
+# Prompt template, now referencing {schema} dynamically
 prompt = PromptTemplate(
     template=(
         "You are a recruitment assistant. Analyze the resume chunks carefully, focusing on ALL explicit skills, "
@@ -24,34 +30,35 @@ prompt = PromptTemplate(
         "- keywords (precompiled list of important terms from the resume)\n"
         "- projects (and their technology stacks)\n"
         "- work_experience (responsibilities and achievements)\n"
-        "- certifications (if they mention tools or frameworks)\n\n"
+        "- certifications (if they mention tools or frameworks)\n"
+        "- total_experience (overall professional experience)\n"
+        "- compatibility_analysis.overall_score (ATS score for the candidate)\n\n"
         "The query may refer to a specific tool, framework, or skill (e.g., Django, Postman). Your job is to:\n"
         "1. Search through ALL these fields and any other text.\n"
         "2. Identify candidates who explicitly worked with or have experience in the queried skill/tool.\n"
-        "3. Ignore candidates who do not explicitly mention the skill/tool.\n\n"
-        "Return ONLY valid JSON with this structure (escape curly braces correctly, no extra fields or commentary):\n"
-        "{{\n"
-        '  "candidates": [\n'
-        "    {{\n"
-        '      "name": "Candidate name",\n'
-        '      "designation": "Current or most recent title",\n'
-        '      "unique_id": "Resume identifier",\n'
-        '      "skills": ["List of relevant skills, tools, or frameworks explicitly mentioned"],\n'
-        '      "experience_summary": "Short summary of work experience (1-2 sentences)"\n'
-        "    }}\n"
-        "  ]\n"
-        "}}\n\n"
-        "For each matching candidate, always include:\n"
-        "- name\n- designation\n- unique_id\n- a list of skills/tools where the queried skill appears explicitly (include related skills as context)\n"
-        "- a concise experience summary (1-2 sentences) highlighting their work with the queried skill.\n\n"
-        "Query: {query}\n\nResume Chunks:\n{doc}\n\n"
-        "IMPORTANT: Respond ONLY with valid JSON matching the schema above. No explanations, no extra commentary."
+        "3. Include each candidate’s ATS score (0-100) from their compatibility analysis.\n"
+        "4. Include their total professional experience.\n"
+        "5. Ignore candidates who do not explicitly mention the skill/tool.\n\n"
+        "Return ONLY valid JSON following this schema (escape curly braces properly, no extra commentary):\n"
+        "{schema}\n\n"
+        "Query: {query}\n\n"
+        "Resume Chunks:\n{doc}\n\n"
+        "IMPORTANT: Respond ONLY with valid JSON matching the schema exactly. No extra text."
     ),
-    input_variables=["query", "doc"],  # schema is now built-in, no injection errors
+    input_variables=["query", "doc", "schema"],
 )
 
-# Save schema separately for reference (not used in the prompt directly anymore)
+def generate_prompt(query: str, context: str) -> PromptTemplate:
+    """
+    Dynamically generates a prompt with schema included as a variable for readability.
+    """
+    return PromptTemplate(
+        template=prompt.template,
+        input_variables=["query", "doc", "schema"]
+    ).partial(query=query, doc=context, schema=json.dumps(schema, indent=2))
+
+# Save schema for reference (keeps human-readable JSON without escaping)
 schema_path = Path("resume_query_dir/PromptSchema/schema.json")
 schema_path.parent.mkdir(parents=True, exist_ok=True)
 with open(schema_path, "w", encoding="utf-8") as f:
-    json.dump(schema, f, indent=2)
+    json.dump(schema, f, indent=2, ensure_ascii=False)
