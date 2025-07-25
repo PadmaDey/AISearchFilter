@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Load PDF
-loader = PyPDFLoader(r"test_project/raw_docs/Manisha_Ghosh_Data_Analyst_Resume.pdf")
+loader = PyPDFLoader("test_project/raw_docs/Manisha_Ghosh_Data_Analyst_Resume.pdf")
 pages = loader.load()
 
 full_text = "\n".join([page.page_content for page in pages])
@@ -59,7 +59,7 @@ prompt = PromptTemplate(
     input_variables=['query', 'doc']
 )
 
-prompt.save(r"test_project/PromptSchema/schema.json")
+prompt.save("test_project/PromptSchema/schema.json")
 
 # Get retrieved docs first (string query only)
 retrieved_docs = compression_retriever.invoke(query)
