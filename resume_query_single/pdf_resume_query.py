@@ -16,7 +16,7 @@ from langchain_core.output_parsers import StrOutputParser
 load_dotenv()
 
 # === 1. Load the PDF ===
-loader = PyPDFLoader(r"resume_query_single\raw_docs\Manisha_Ghosh_Data_Analyst_Resume.pdf")
+loader = PyPDFLoader("resume_query_single/raw_docs/Manisha_Ghosh_Data_Analyst_Resume.pdf")
 pages = loader.load()
 
 # === 2. Split into smaller chunks for processing ===
@@ -51,7 +51,7 @@ schema = {
 }
 
 # Optionally save schema for reference
-schema_path = Path(r"resume_query_single\PromptSchema\schema_pdf.json")
+schema_path = Path("resume_query_single/PromptSchema/schema_pdf.json")
 schema_path.parent.mkdir(parents=True, exist_ok=True)
 with open(schema_path, "w", encoding="utf-8") as f:
     json.dump(schema, f, indent=2)
