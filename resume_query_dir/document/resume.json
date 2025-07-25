@@ -1,1 +1,765 @@
-[]
+[
+  {
+    "_id": "4b7c7fb4-17fb-47da-843c-f9ae95731880",
+    "name": "Your Full Name",
+    "email": "your.email@example.com",
+    "secondary_email": "",
+    "primary_phone": "+1-123-456-7890",
+    "secondary_phone": "",
+    "cv_directory_link": "CVs/Data_Science_Consultant_Resume",
+    "unique_id": "Data_Science_Consultant_Resume_2025-07-23T14:36:18.289237",
+    "designation": "Data Science Consultant",
+    "location": "[City, Country]",
+    "personal_details": {
+      "date_of_birth": "",
+      "age": "",
+      "gender": "",
+      "marital_status": ""
+    },
+    "social_profiles": {
+      "github": "github.com/yourusername",
+      "linkedin": "linkedin.com/in/yourname",
+      "twitter": "",
+      "leetcode": "",
+      "others": []
+    },
+    "education": [
+      {
+        "degree": "Master of Science in Data Science",
+        "institution": "[University Name]",
+        "graduation_year": "2020"
+      },
+      {
+        "degree": "Bachelor of Technology in Computer Science",
+        "institution": "[University Name]",
+        "graduation_year": "2018"
+      }
+    ],
+    "work_experience": [
+      {
+        "company_name": "ABC Analytics Solutions",
+        "position": "Data Science Consultant",
+        "duration": "Jan 2022 - Present",
+        "responsibilities": [
+          "Built predictive models for customer churn and demand forecasting, improving client KPIs by 15%",
+          "Collaborated with cross-functional teams to define metrics and build interactive dashboards using Power BI",
+          "Implemented ML pipelines for e-commerce personalization using scikit-learn and AWS SageMaker",
+          "Presented analytical results to stakeholders and provided actionable insights for decision-making"
+        ]
+      },
+      {
+        "company_name": "XYZ Technologies",
+        "position": "Data Analyst",
+        "duration": "Jul 2020 - Dec 2021",
+        "responsibilities": [
+          "Developed SQL-based reporting tools and dashboards for finance and operations teams",
+          "Automated ETL workflows, reducing report generation time by 40%",
+          "Conducted exploratory data analysis for a major retail client, identifying $500K in potential savings",
+          "Supported A/B testing and ad-hoc analysis for marketing campaigns"
+        ]
+      }
+    ],
+    "total_experience": "61 months",
+    "technical_skills": [
+      "A/B Testing",
+      "Agile Delivery",
+      "AWS",
+      "Azure",
+      "Client Communication",
+      "Clustering",
+      "Data Storytelling",
+      "Git",
+      "Jupyter",
+      "ML Studio",
+      "MySQL",
+      "NumPy",
+      "Pandas",
+      "PostgreSQL",
+      "Power BI",
+      "Predictive Modeling",
+      "Python",
+      "R",
+      "S3",
+      "SageMaker",
+      "scikit-learn",
+      "Snowflake",
+      "SQL",
+      "Tableau",
+      "TensorFlow",
+      "Time Series",
+      "XGBoost"
+    ],
+    "soft_skills": [],
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "certifications": [
+      "Google Professional Data Engineer (2023)",
+      "AWS Certified Machine Learning - Specialty (2022)",
+      "Tableau Desktop Specialist (2021)"
+    ],
+    "projects": [
+      {
+        "name": "Customer Churn Prediction Model",
+        "description": "Built and deployed a model for a telecom company using logistic regression and XGBoost.",
+        "technologies": [
+          "logistic regression",
+          "XGBoost"
+        ]
+      },
+      {
+        "name": "Sales Forecasting Dashboard",
+        "description": "Designed a Power BI dashboard integrating SQL queries and real-time KPIs for retail leadership.",
+        "technologies": [
+          "Power BI",
+          "SQL"
+        ]
+      },
+      {
+        "name": "NLP Sentiment Analysis",
+        "description": "Analyzed 100K+ product reviews to enhance customer feedback loop.",
+        "technologies": [
+          "NLP"
+        ]
+      }
+    ],
+    "keywords": [
+      "A/B Testing",
+      "Agile Delivery",
+      "AWS",
+      "Azure",
+      "Client Communication",
+      "Clustering",
+      "Data Storytelling",
+      "Git",
+      "Jupyter",
+      "ML Studio",
+      "MySQL",
+      "NumPy",
+      "Pandas",
+      "PostgreSQL",
+      "Power BI",
+      "Predictive Modeling",
+      "Python",
+      "R",
+      "S3",
+      "SageMaker",
+      "scikit-learn",
+      "Snowflake",
+      "SQL",
+      "Tableau",
+      "TensorFlow",
+      "Time Series",
+      "XGBoost"
+    ],
+    "content_hash": "0f3323bc277894d47c17cb882ae6b1733eb52543cea7c6c43d779eb39a2b0943",
+    "job_id": "ba3c87bb-a64c-4821-bfbf-cfa2c3240775",
+    "updated_at": "2025-07-23T14:36:18.289237",
+    "created_at": "2025-07-23T14:36:18.289237",
+    "status": "New",
+    "compatibility_analysis": {
+      "overall_score": 75,
+      "analysis": {
+        "strengths": [
+          "Strong data science and analytics background",
+          "Experience with SQL and data visualization tools",
+          "Proven track record in predictive modeling and machine learning",
+          "Experience in collaborating with cross-functional teams"
+        ],
+        "gaps": [
+          "Lack of specific experience with Amazon QuickSight",
+          "No explicit mention of Excel proficiency",
+          "Job requires 2+ years as a Business Analyst, while the resume shows Data Science roles"
+        ],
+        "matching_points": [
+          "SQL skills",
+          "Power BI experience",
+          "A/B testing experience",
+          "Client communication and data storytelling skills",
+          "Cross-functional team collaboration"
+        ],
+        "improvement_areas": [
+          "Highlight any Excel skills or experience",
+          "Emphasize business analysis aspects of past roles",
+          "Consider getting familiar with Amazon QuickSight"
+        ]
+      },
+      "detailed_scoring": {
+        "skills_match": 80,
+        "experience_relevance": 70,
+        "education_fit": 90,
+        "overall_potential": 85
+      }
+    }
+  },
+  {
+    "_id": "924e2f68-cb40-46e3-bfd7-698bf23f8e26",
+    "name": "Basudev Samanta",
+    "email": "basudev.samanta@example.com",
+    "secondary_email": "",
+    "primary_phone": "+1-234-567-8901",
+    "secondary_phone": "",
+    "cv_directory_link": "CVs/developer_resume",
+    "unique_id": "developer_resume_2025-07-23T14:36:30.226651",
+    "designation": "Python Developer",
+    "location": "",
+    "personal_details": {
+      "date_of_birth": "",
+      "age": "",
+      "gender": "",
+      "marital_status": ""
+    },
+    "social_profiles": {
+      "github": "github.com/basudev",
+      "linkedin": "linkedin.com/in/johndoe",
+      "twitter": "",
+      "leetcode": "",
+      "others": []
+    },
+    "education": [
+      {
+        "degree": "Bachelor of Technology in Computer Science",
+        "institution": "ABC University",
+        "graduation_year": "2022"
+      }
+    ],
+    "work_experience": [
+      {
+        "company_name": "Tech Solutions Inc.",
+        "position": "Python Developer",
+        "duration": "Jan 2023 - Present",
+        "responsibilities": [
+          "Developed and maintained RESTful APIs using FastAPI and PostgreSQL",
+          "Integrated third-party services like Google OAuth and Stripe",
+          "Collaborated with frontend team and QA for end-to-end feature delivery",
+          "Improved system performance through query optimization and caching"
+        ]
+      }
+    ],
+    "total_experience": "31 months",
+    "technical_skills": [
+      "AWS",
+      "CI/CD",
+      "Django",
+      "Docker",
+      "FastAPI",
+      "Flask",
+      "Git",
+      "MongoDB",
+      "PostgreSQL",
+      "Postman",
+      "pytest",
+      "Python",
+      "SQL"
+    ],
+    "soft_skills": [],
+    "languages": [],
+    "certifications": [],
+    "projects": [],
+    "keywords": [
+      "AWS",
+      "CI/CD",
+      "Django",
+      "Docker",
+      "FastAPI",
+      "Flask",
+      "Git",
+      "MongoDB",
+      "PostgreSQL",
+      "Postman",
+      "pytest",
+      "Python",
+      "SQL"
+    ],
+    "content_hash": "39a31419bdfea892a52ceb78950b4d2fcfcd400289250d0a7677567e53fd4fca",
+    "job_id": "1bf616b5-781a-41f5-8f57-87b0547df94c",
+    "updated_at": "2025-07-23T14:36:30.226651",
+    "created_at": "2025-07-23T14:36:30.226651",
+    "status": "New",
+    "compatibility_analysis": {
+      "overall_score": 30,
+      "analysis": {
+        "strengths": [
+          "Python programming skills",
+          "SQL knowledge",
+          "Bachelor's degree in Computer Science"
+        ],
+        "gaps": [
+          "Lack of business analysis experience",
+          "No Power BI or Amazon QuickSight experience",
+          "Limited Excel proficiency mentioned"
+        ],
+        "matching_points": [
+          "Python skills",
+          "SQL knowledge",
+          "Bachelor's degree in relevant field"
+        ],
+        "improvement_areas": [
+          "Gain experience in business analysis",
+          "Learn Power BI or Amazon QuickSight",
+          "Develop advanced Excel skills",
+          "Acquire experience in data visualization and dashboard creation"
+        ]
+      },
+      "detailed_scoring": {
+        "skills_match": 35,
+        "experience_relevance": 20,
+        "education_fit": 70,
+        "overall_potential": 30
+      }
+    }
+  },
+  {
+    "_id": "a502db3d-dcf5-4a33-9ddd-7cba60ff94bc",
+    "name": "MANISHA GHOSH",
+    "email": "manisha27@gmail.com",
+    "secondary_email": "",
+    "primary_phone": "+91 9434342716",
+    "secondary_phone": "",
+    "cv_directory_link": "CVs/Manisha_Ghosh_Data_Analyst_Resume",
+    "unique_id": "Manisha_Ghosh_Data_Analyst_Resume_2025-07-23T14:36:43.031219",
+    "designation": "Business Analyst",
+    "location": "Bethuadahari, West Bengal",
+    "personal_details": {
+      "date_of_birth": "",
+      "age": "",
+      "gender": "",
+      "marital_status": ""
+    },
+    "social_profiles": {
+      "github": "https://github.com/manishaghosh07",
+      "linkedin": "https://linkedin.com/manisha1999",
+      "twitter": "",
+      "leetcode": "",
+      "others": []
+    },
+    "education": [
+      {
+        "degree": "Bachelor of Technology in Information Technology",
+        "institution": "XYZ University, India",
+        "graduation_year": "2020"
+      }
+    ],
+    "work_experience": [
+      {
+        "company_name": "ABC Tech Solutions",
+        "position": "Business Analyst",
+        "duration": "June 2022 – Present",
+        "responsibilities": [
+          "Designed and maintained Power BI dashboards for product and sales teams, improving decision-making speed by 40%",
+          "Wrote complex SQL queries to extract and analyze data from large relational databases (MySQL, Redshift)",
+          "Automated weekly KPI tracking using Excel macros and dashboards, reducing manual effort by 30%",
+          "Collaborated with cross-functional teams to deliver insights that led to a 12% increase in revenue",
+          "Conducted A/B tests and customer behavior analysis for new feature rollouts",
+          "Used Python (pandas, matplotlib) for exploratory data analysis and ad-hoc reports (self-initiated projects)"
+        ]
+      },
+      {
+        "company_name": "XYZ Analytics",
+        "position": "Data Analyst Intern",
+        "duration": "Jan 2021 – May 2022",
+        "responsibilities": [
+          "Supported client reporting by building automated dashboards in Amazon QuickSight",
+          "Cleaned and transformed raw data for modeling and visualizations using Excel and SQL",
+          "Assisted in developing financial reports and presented insights to senior management",
+          "Contributed to Python-based data wrangling tasks during a digital marketing optimization project"
+        ]
+      }
+    ],
+    "total_experience": "55 months",
+    "technical_skills": [
+      "A/B Testing & KPI Reporting",
+      "Agile & Scrum Methodologies",
+      "Amazon QuickSight",
+      "Data Visualization & Storytelling",
+      "Excel",
+      "Macros",
+      "matplotlib",
+      "MySQL",
+      "NumPy",
+      "pandas",
+      "Pivot Tables",
+      "PostgreSQL",
+      "Power BI",
+      "Python",
+      "Redshift",
+      "SQL",
+      "Stakeholder Management",
+      "VLOOKUP"
+    ],
+    "soft_skills": [],
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "certifications": [
+      "Google Data Analytics Professional Certificate – Coursera",
+      "Microsoft Certified: Data Analyst Associate (Power BI) – Microsoft",
+      "SQL for Data Science – Udemy"
+    ],
+    "projects": [
+      {
+        "name": "Customer Segmentation using RFM Analysis",
+        "description": "Performed segmentation on e-commerce data using Python and SQL. Visualized segments in Power BI to drive targeted marketing",
+        "technologies": [
+          "Python",
+          "SQL",
+          "Power BI"
+        ]
+      },
+      {
+        "name": "Sales Forecast Dashboard",
+        "description": "Created an interactive Power BI dashboard for regional sales trends. Included drill-down capabilities and forecast visualizations using DAX",
+        "technologies": [
+          "Power BI",
+          "DAX"
+        ]
+      }
+    ],
+    "keywords": [
+      "A/B Testing & KPI Reporting",
+      "Agile & Scrum Methodologies",
+      "Amazon QuickSight",
+      "Data Visualization & Storytelling",
+      "Excel",
+      "Macros",
+      "matplotlib",
+      "MySQL",
+      "NumPy",
+      "pandas",
+      "Pivot Tables",
+      "PostgreSQL",
+      "Power BI",
+      "Python",
+      "Redshift",
+      "SQL",
+      "Stakeholder Management",
+      "VLOOKUP"
+    ],
+    "content_hash": "750182bf5f8cda48a6d963e4c99c6623272f780dd022386de7ada7b30535db64",
+    "job_id": "11d1cb05-7ead-4ae1-b6ac-7304c94aaa40",
+    "updated_at": "2025-07-23T14:36:43.031219",
+    "created_at": "2025-07-23T14:36:43.031219",
+    "status": "New",
+    "compatibility_analysis": {
+      "overall_score": 85,
+      "analysis": {
+        "strengths": [
+          "Strong SQL skills with experience in multiple databases",
+          "Proficiency in Power BI and Amazon QuickSight",
+          "Experience in cross-functional collaboration",
+          "Hands-on experience with A/B testing and KPI reporting",
+          "Python skills for data analysis"
+        ],
+        "gaps": [
+          "Location mismatch (Bethuadahari vs. Bangalore)",
+          "Slightly less than 2 years of full-time experience as a Business Analyst"
+        ],
+        "matching_points": [
+          "Bachelor's degree in Information Technology",
+          "Experience in data extraction, transformation, and analysis",
+          "Proficiency in Excel, including macros and dashboards",
+          "Experience in developing interactive dashboards and reports",
+          "Strong analytical and problem-solving skills"
+        ],
+        "improvement_areas": [
+          "Consider gaining more experience in forecasting",
+          "Emphasize experience with data quality management"
+        ]
+      },
+      "detailed_scoring": {
+        "skills_match": 90,
+        "experience_relevance": 80,
+        "education_fit": 85,
+        "overall_potential": 85
+      }
+    }
+  },
+  {
+    "_id": "43332692-5c61-4b88-a391-8b54ec9cd01e",
+    "name": "MANISHA GHOSH",
+    "email": "manisha27@gmail.com",
+    "secondary_email": "",
+    "primary_phone": "+91 9434342716",
+    "secondary_phone": "",
+    "cv_directory_link": "CVs/Manisha_Ghosh_Data_Analyst_Resume",
+    "unique_id": "Manisha_Ghosh_Data_Analyst_Resume_v2_2025-07-23T14:36:57.931788",
+    "designation": "Business Analyst",
+    "location": "Bethuadahari, West Bengal",
+    "personal_details": {
+      "date_of_birth": "",
+      "age": "",
+      "gender": "",
+      "marital_status": ""
+    },
+    "social_profiles": {
+      "github": "https://github.com/manishaghosh07",
+      "linkedin": "https://linkedin.com/manisha1999",
+      "twitter": "",
+      "leetcode": "",
+      "others": []
+    },
+    "education": [
+      {
+        "degree": "Bachelor of Technology in Information Technology",
+        "institution": "XYZ University, India",
+        "graduation_year": "2020"
+      }
+    ],
+    "work_experience": [
+      {
+        "company_name": "ABC Tech Solutions",
+        "position": "Business Analyst",
+        "duration": "June 2022 – Present",
+        "responsibilities": [
+          "Designed and maintained Power BI dashboards for product and sales teams, improving decision-making speed by 40%",
+          "Wrote complex SQL queries to extract and analyze data from large relational databases (MySQL, Redshift)",
+          "Automated weekly KPI tracking using Excel macros and dashboards, reducing manual effort by 30%",
+          "Collaborated with cross-functional teams to deliver insights that led to a 12% increase in revenue",
+          "Conducted A/B tests and customer behavior analysis for new feature rollouts",
+          "Used Python (pandas, matplotlib) for exploratory data analysis and ad-hoc reports (self-initiated projects)"
+        ]
+      },
+      {
+        "company_name": "XYZ Analytics",
+        "position": "Data Analyst Intern",
+        "duration": "Jan 2021 – May 2022",
+        "responsibilities": [
+          "Supported client reporting by building automated dashboards in Amazon QuickSight",
+          "Cleaned and transformed raw data for modeling and visualizations using Excel and SQL",
+          "Assisted in developing financial reports and presented insights to senior management",
+          "Contributed to Python-based data wrangling tasks during a digital marketing optimization project"
+        ]
+      }
+    ],
+    "total_experience": "55 months",
+    "technical_skills": [
+      "A/B Testing & KPI Reporting",
+      "Agile & Scrum Methodologies",
+      "Amazon QuickSight",
+      "Data Visualization & Storytelling",
+      "Excel",
+      "Macros",
+      "matplotlib",
+      "MySQL",
+      "NumPy",
+      "pandas",
+      "Pivot Tables",
+      "PostgreSQL",
+      "Power BI",
+      "Python",
+      "Redshift",
+      "SQL",
+      "Stakeholder Management",
+      "VLOOKUP"
+    ],
+    "soft_skills": [],
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "certifications": [
+      "Google Data Analytics Professional Certificate – Coursera",
+      "Microsoft Certified: Data Analyst Associate (Power BI) – Microsoft",
+      "SQL for Data Science – Udemy"
+    ],
+    "projects": [
+      {
+        "name": "Customer Segmentation using RFM Analysis",
+        "description": "Performed segmentation on e-commerce data using Python and SQL. Visualized segments in Power BI to drive targeted marketing",
+        "technologies": [
+          "Python",
+          "SQL",
+          "Power BI"
+        ]
+      },
+      {
+        "name": "Sales Forecast Dashboard",
+        "description": "Created an interactive Power BI dashboard for regional sales trends. Included drill-down capabilities and forecast visualizations using DAX",
+        "technologies": [
+          "Power BI",
+          "DAX"
+        ]
+      }
+    ],
+    "keywords": [
+      "A/B Testing & KPI Reporting",
+      "Agile & Scrum Methodologies",
+      "Amazon QuickSight",
+      "Data Visualization & Storytelling",
+      "Excel",
+      "Macros",
+      "matplotlib",
+      "MySQL",
+      "NumPy",
+      "pandas",
+      "Pivot Tables",
+      "PostgreSQL",
+      "Power BI",
+      "Python",
+      "Redshift",
+      "SQL",
+      "Stakeholder Management",
+      "VLOOKUP"
+    ],
+    "content_hash": "7df4b3efe4edca8c25dd7819a29e0b764700e3d7b57addba24f58d67eb693563",
+    "job_id": "35b84788-f942-48e1-bee4-631af97c98d3",
+    "updated_at": "2025-07-23T14:36:57.931788",
+    "created_at": "2025-07-23T14:36:57.931788",
+    "status": "New",
+    "compatibility_analysis": {
+      "overall_score": 90,
+      "analysis": {
+        "strengths": [
+          "Strong match in technical skills (SQL, Excel, Power BI, Python)",
+          "Relevant experience as a Business Analyst with 2+ years",
+          "Experience in cross-functional collaboration and stakeholder management",
+          "Proficiency in data visualization and dashboard creation",
+          "Experience with A/B testing and KPI reporting"
+        ],
+        "gaps": [
+          "No specific mention of experience with Amazon QuickSight in current role",
+          "No explicit mention of forecasting experience"
+        ],
+        "matching_points": [
+          "Bachelor's degree in Information Technology",
+          "Over 2 years of experience as a Business Analyst",
+          "Strong SQL skills for querying large datasets",
+          "Proficiency in Excel including advanced features",
+          "Experience with Power BI for dashboard creation",
+          "Python skills for data analysis",
+          "Experience in collaborating with cross-functional teams",
+          "A/B testing experience",
+          "KPI tracking and reporting"
+        ],
+        "improvement_areas": [
+          "Gain more experience with Amazon QuickSight",
+          "Highlight any forecasting projects or experiences",
+          "Emphasize problem-solving capabilities more explicitly in the resume"
+        ]
+      },
+      "detailed_scoring": {
+        "skills_match": 95,
+        "experience_relevance": 90,
+        "education_fit": 85,
+        "overall_potential": 90
+      }
+    }
+  },
+  {
+    "_id": "00433cf4-5725-4462-8033-cb9e35ddfd66",
+    "name": "Basudev Samanta",
+    "email": "basudev.samanta@example.com",
+    "secondary_email": "",
+    "primary_phone": "+1-234-567-8901",
+    "secondary_phone": "",
+    "cv_directory_link": "CVs/python_developer_resume",
+    "unique_id": "python_developer_resume_2025-07-23T14:37:10.074330",
+    "designation": "Python Developer",
+    "location": "",
+    "personal_details": {
+      "date_of_birth": "",
+      "age": "",
+      "gender": "",
+      "marital_status": ""
+    },
+    "social_profiles": {
+      "github": "github.com/basudev",
+      "linkedin": "linkedin.com/in/johndoe",
+      "twitter": "",
+      "leetcode": "",
+      "others": []
+    },
+    "education": [
+      {
+        "degree": "Bachelor of Technology in Computer Science",
+        "institution": "ABC University",
+        "graduation_year": "2022"
+      }
+    ],
+    "work_experience": [
+      {
+        "company_name": "Tech Solutions Inc.",
+        "position": "Python Developer",
+        "duration": "Jan 2023 - Present",
+        "responsibilities": [
+          "Developed and maintained RESTful APIs using FastAPI and PostgreSQL",
+          "Integrated third-party services like Google OAuth and Stripe",
+          "Collaborated with frontend team and QA for end-to-end feature delivery",
+          "Improved system performance through query optimization and caching"
+        ]
+      }
+    ],
+    "total_experience": "31 months",
+    "technical_skills": [
+      "AWS",
+      "CI/CD",
+      "Django",
+      "Docker",
+      "FastAPI",
+      "Flask",
+      "Git",
+      "MongoDB",
+      "PostgreSQL",
+      "Postman",
+      "pytest",
+      "Python",
+      "SQL"
+    ],
+    "soft_skills": [],
+    "languages": [],
+    "certifications": [],
+    "projects": [],
+    "keywords": [
+      "AWS",
+      "CI/CD",
+      "Django",
+      "Docker",
+      "FastAPI",
+      "Flask",
+      "Git",
+      "MongoDB",
+      "PostgreSQL",
+      "Postman",
+      "pytest",
+      "Python",
+      "SQL"
+    ],
+    "content_hash": "006b80826af4eda8ad37e5134f6249381b5881869dd750ea894fe77a5eb2b045",
+    "job_id": "6320a0b7-cf5f-40f9-acac-fb8ae220d3d8",
+    "updated_at": "2025-07-23T14:37:10.074330",
+    "created_at": "2025-07-23T14:37:10.074330",
+    "status": "New",
+    "compatibility_analysis": {
+      "overall_score": 30,
+      "analysis": {
+        "strengths": [
+          "Python programming skills",
+          "Bachelor's degree in Computer Science"
+        ],
+        "gaps": [
+          "Lack of business analysis experience",
+          "No experience with Excel, Power BI, or QuickSight",
+          "Missing analytical and problem-solving skills demonstration"
+        ],
+        "matching_points": [
+          "Python knowledge",
+          "SQL skills",
+          "Bachelor's degree in relevant field"
+        ],
+        "improvement_areas": [
+          "Gain experience in business analysis",
+          "Learn Excel, Power BI, and QuickSight",
+          "Develop skills in data visualization and reporting"
+        ]
+      },
+      "detailed_scoring": {
+        "skills_match": 20,
+        "experience_relevance": 10,
+        "education_fit": 70,
+        "overall_potential": 30
+      }
+    }
+  }
+]

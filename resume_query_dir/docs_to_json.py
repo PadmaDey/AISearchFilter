@@ -1,8 +1,9 @@
 # ================================
-# resume_query_dir/docs_to_json.py
+# resume_query_dir/docs_to_json.py (Fixed Deduplication + Curly Braces + Logging + Summary)
 # ================================
 import json
 import uuid
+import hashlib
 from pathlib import Path
 from datetime import datetime
 import re
@@ -17,12 +18,12 @@ load_dotenv()
 # === Setup LLM ===
 model = ChatAnthropic(model="claude-3-5-sonnet-20240620")
 
-# === Resume Extraction Prompt (Escaped Braces) ===
+# === Resume Extraction Prompt (Curly Braces Escaped for LangChain) ===
 extract_prompt = PromptTemplate(
     template="""
 Extract the following details from the resume and return ONLY valid JSON (no explanations, no text outside JSON):
 
-{{
+{{{{  
   "name": "",
   "email": "",
   "phone": "",
@@ -42,7 +43,7 @@ Extract the following details from the resume and return ONLY valid JSON (no exp
     {{"name": "", "description": "", "technologies": []}}
   ],
   "languages": []
-}}
+}}}}
 
 Resume: {resume}
 """,
@@ -50,13 +51,13 @@ Resume: {resume}
 )
 extract_chain = extract_prompt | model | StrOutputParser()
 
-# === ATS Evaluation Prompt (Escaped Braces) ===
+# === ATS Evaluation Prompt (Curly Braces Escaped) ===
 ats_prompt = PromptTemplate(
     template="""
 You are an ATS evaluator. Compare the following resume details to the job description.
 Return ONLY a JSON object with:
 
-{{
+{{{{  
   "overall_score": 0,
   "analysis": {{
     "strengths": [],
@@ -70,7 +71,7 @@ Return ONLY a JSON object with:
     "education_fit": 0,
     "overall_potential": 0
   }}
-}}
+}}}}
 
 Resume: {resume}
 Job Description: {job_description}
@@ -96,12 +97,9 @@ def parse_duration(duration_str):
         "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
     }
     try:
-        # Normalize en-dash/em-dash to a normal hyphen
         duration_str = duration_str.replace("–", "-").replace("—", "-")
-
         start, end = duration_str.split("-")
-        start = start.strip().lower()
-        end = end.strip().lower()
+        start, end = start.strip().lower(), end.strip().lower()
 
         def parse_date(date_str):
             parts = date_str.split()
@@ -120,7 +118,6 @@ def parse_duration(duration_str):
     except Exception:
         return 0
 
-
 def calculate_total_experience(work_experience):
     total_months = sum(parse_duration(job.get("duration", "")) for job in work_experience)
     return f"{total_months} months"
@@ -131,13 +128,22 @@ def load_existing_json(path):
             return json.load(f)
     return []
 
-# === Main Conversion Function ===
+def get_content_hash(text: str) -> str:
+    """Generate SHA256 hash to identify duplicates by content."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+# === Main Conversion Function with Deduplication ===
 def convert_docs_to_json(input_dir: str, output_json_path: str, job_description: str) -> list:
     input_path = Path(input_dir)
     output_path = Path(output_json_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     all_resumes = load_existing_json(output_path)
+    seen_hashes = {r.get("content_hash") for r in all_resumes if "content_hash" in r}
+    batch_hashes = set()
+
+    added_count = 0
+    skipped_count = 0
 
     for file_path in input_path.glob("*"):
         if file_path.suffix.lower() not in [".pdf", ".docx"]:
@@ -145,12 +151,21 @@ def convert_docs_to_json(input_dir: str, output_json_path: str, job_description:
 
         print(f"\nProcessing {file_path.name}...")
         try:
+            # Load raw text
             if file_path.suffix.lower() == ".pdf":
                 pages = PyPDFLoader(str(file_path)).load()
             else:
                 pages = Docx2txtLoader(str(file_path)).load()
             resume_text = "\n".join([p.page_content for p in pages])
 
+            # Deduplicate by content hash (JSON + batch-level)
+            content_hash = get_content_hash(resume_text)
+            if content_hash in seen_hashes or content_hash in batch_hashes:
+                print(f"  [SKIPPED] Duplicate content detected for '{file_path.name}'.")
+                skipped_count += 1
+                continue
+
+            # Extract structured fields
             raw_output = extract_chain.invoke({"resume": resume_text})
             parsed = json.loads(raw_output)
             skills = normalize_skills(parsed.get("skills", []))
@@ -158,13 +173,14 @@ def convert_docs_to_json(input_dir: str, output_json_path: str, job_description:
 
             now = datetime.utcnow().isoformat()
             unique_id = f"{file_path.stem}_{now}"
-            existing = next((r for r in all_resumes if r["cv_directory_link"] == f"CVs/{file_path.stem}"), None)
 
-            created_at = existing["created_at"] if existing else now
-            status = "Updated" if existing else "New"
-            if existing:
-                all_resumes.remove(existing)
+            # Version handling (same filename, new content)
+            existing_by_name = [r for r in all_resumes if r["cv_directory_link"] == f"CVs/{file_path.stem}"]
+            if existing_by_name:
+                version = len(existing_by_name) + 1
+                unique_id = f"{file_path.stem}_v{version}_{now}"
 
+            # ATS Evaluation
             ats_result = ats_chain.invoke({"resume": json.dumps(parsed), "job_description": job_description})
             try:
                 ats_data = json.loads(ats_result)
@@ -175,6 +191,7 @@ def convert_docs_to_json(input_dir: str, output_json_path: str, job_description:
                     "detailed_scoring": {"skills_match": 0, "experience_relevance": 0, "education_fit": 0, "overall_potential": 0}
                 }
 
+            # Build structured resume
             structured_resume = {
                 "_id": str(uuid.uuid4()),
                 "name": parsed.get("name", ""),
@@ -190,9 +207,7 @@ def convert_docs_to_json(input_dir: str, output_json_path: str, job_description:
                 "social_profiles": {
                     "github": parsed.get("github", ""),
                     "linkedin": parsed.get("linkedin", ""),
-                    "twitter": "",
-                    "leetcode": "",
-                    "others": []
+                    "twitter": "", "leetcode": "", "others": []
                 },
                 "education": parsed.get("education", []),
                 "work_experience": parsed.get("work_experience", []),
@@ -203,19 +218,29 @@ def convert_docs_to_json(input_dir: str, output_json_path: str, job_description:
                 "certifications": parsed.get("certifications", []),
                 "projects": parsed.get("projects", []),
                 "keywords": sorted(set(skills), key=str.lower),
+                "content_hash": content_hash,
                 "job_id": str(uuid.uuid4()),
                 "updated_at": now,
-                "created_at": created_at,
-                "status": status,
+                "created_at": now,
+                "status": "New",
                 "compatibility_analysis": ats_data
             }
+
             all_resumes.append(structured_resume)
+            seen_hashes.add(content_hash)
+            batch_hashes.add(content_hash)
+            added_count += 1
+            print(f"  [ADDED] Stored resume: {file_path.name}")
+
         except Exception as e:
             print(f"Error processing {file_path.name}: {e}")
 
+    # Save final JSON
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(all_resumes, f, indent=2, ensure_ascii=False)
+
     print(f"\nProcessed {len(all_resumes)} resumes. JSON saved at {output_path}")
+    print(f"[SUMMARY] {added_count} resumes added, {skipped_count} duplicates skipped.")
     return all_resumes
 
 if __name__ == "__main__":
