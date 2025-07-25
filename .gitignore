@@ -208,3 +208,4 @@ aisearchfilter_venv/
 # "Which candidates have over 3 years of experience?"
 
 # Extract the candidate's name, all skills, and a 1-2 sentence experience summary.
+# I want the FAISS vectorstore rebuild only when new resumes are added - add this feature too.
